@@ -1,0 +1,12 @@
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Large documents
+*.odt
+*.pdf
+*.docx
+
+# Folders
+New folder/
