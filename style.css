@@ -838,6 +838,18 @@ img {
     background: var(--white);
 }
 
+/* Centered layout when HOD photo is removed */
+.about-content-centered {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.about-content-centered .section-badge {
+    text-align: center;
+}
+
+/* Legacy grid kept for backwards compat */
 .about-responsive-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -914,6 +926,179 @@ img {
     transform: none;
 }
 
+/* =============================================
+   VISION & MISSION FLIP CARDS
+   ============================================= */
+
+.vm-flip-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.vm-flip-card {
+    width: 100%;
+    max-width: 380px;
+    height: 280px;
+    perspective: 1200px;
+    cursor: pointer;
+    flex: 1 1 300px;
+}
+
+.vm-flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.vm-flip-card:hover .vm-flip-inner,
+.vm-flip-card.flipped .vm-flip-inner {
+    transform: rotateY(180deg);
+}
+
+.vm-flip-front,
+.vm-flip-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+}
+
+.vm-flip-front {
+    background: var(--white);
+    border: 2px solid var(--medium-gray);
+}
+
+.vm-flip-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, var(--primary-blue), #1e3a8a);
+    color: var(--white);
+}
+
+.vm-icon {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: var(--primary-blue);
+    transition: var(--transition);
+}
+
+.vm-flip-back .vm-icon {
+    color: var(--accent-gold);
+    filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.4));
+}
+
+.vm-flip-front h3 {
+    font-size: 1.4rem;
+    color: var(--slate-900);
+    margin-bottom: 0.75rem;
+}
+
+.vm-flip-back h3 {
+    font-size: 1.4rem;
+    color: var(--accent-gold);
+    margin-bottom: 1rem;
+}
+
+.vm-flip-front p {
+    font-size: 0.9rem;
+    color: var(--slate-500);
+    line-height: 1.6;
+}
+
+.vm-flip-back p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.7;
+}
+
+.vm-flip-hint {
+    margin-top: 1rem;
+    font-size: 0.78rem;
+    color: var(--slate-400);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.vm-flip-hint i {
+    color: var(--accent-gold);
+}
+
+/* Mission list on back */
+.vm-mission-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.vm-mission-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.92);
+    margin-bottom: 0.75rem;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.vm-mission-list li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.vm-mission-list li i {
+    color: var(--accent-gold);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+    .vm-flip-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .vm-flip-card {
+        max-width: 100%;
+        height: 260px;
+    }
+}
+
+@media (max-width: 480px) {
+    .vm-flip-card {
+        height: 290px;
+    }
+
+    .vm-flip-front h3,
+    .vm-flip-back h3 {
+        font-size: 1.2rem;
+    }
+
+    .vm-icon {
+        font-size: 2.2rem;
+    }
+}
+
+/* Legacy styles kept */
 .hod-profile-card {
     display: flex;
     align-items: center;

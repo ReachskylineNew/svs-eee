@@ -239,6 +239,14 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         setupMarquee();
     }
+
+    // 7. Vision & Mission Flip Cards — Touch / Tap Support for Mobile
+    const vmFlipCards = document.querySelectorAll('.vm-flip-card');
+    vmFlipCards.forEach(card => {
+        card.addEventListener('click', () => {
+            card.classList.toggle('flipped');
+        });
+    });
 });
 
 function resetForm() {
